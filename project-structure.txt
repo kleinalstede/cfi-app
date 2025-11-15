@@ -1,0 +1,92 @@
+﻿╔════════════════════════════════════════════════════════════╗
+║             CFI-APP PROJECT DOCUMENTATION                 ║
+║                    15.11.2025 23:00                        ║
+╚════════════════════════════════════════════════════════════╝
+
+
+━━━ ADMIN-PANEL ━━━
+
+Name:     admin-panel
+Version:  0.0.0
+Desc:     
+
+Scripts:
+  - dev: vite
+  - build: vite build
+  - lint: eslint .
+  - preview: vite preview
+
+Dependencies: 12 packages
+DevDeps:      9 packages
+
+Struktur:
+  📁 public/
+  📁 src/
+    📁 assets/
+    📁 components/
+    📁 context/
+    📁 hooks/
+    📁 i18n/
+    📁 pages/
+    📁 services/
+
+━━━ BACKEND ━━━
+
+Name:     cfi-app-backend
+Version:  1.0.0
+Desc:     CFI App Backend API
+
+Scripts:
+  - start: node src/index.js
+  - dev: nodemon src/index.js
+
+Dependencies: 6 packages
+DevDeps:      1 packages
+
+Struktur:
+  📁 src/
+    📁 config/
+    📁 controllers/
+    📁 middleware/
+    📁 models/
+    📁 routes/
+    📁 utils/
+  📁 uploads/
+    📁 products/
+
+━━━ MOBILE-APP ━━━
+
+Name:     mobile-app
+Version:  1.0.0
+Desc:     
+
+Scripts:
+  - start: expo start
+  - reset-project: node ./scripts/reset-project.js
+  - android: expo start --android
+  - ios: expo start --ios
+  - web: expo start --web
+  - lint: expo lint
+
+Dependencies: 30 packages
+DevDeps:      5 packages
+
+Struktur:
+  📁 .vscode/
+  📁 app/
+    📁 (tabs)/
+  📁 assets/
+    📁 images/
+  📁 components/
+    📁 ui/
+  📁 constants/
+  📁 hooks/
+  📁 scripts/
+  📁 src/
+    📁 assets/
+    📁 components/
+    📁 context/
+    📁 i18n/
+    📁 navigation/
+    📁 screens/
+    📁 services/
