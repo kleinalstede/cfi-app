@@ -144,3 +144,46 @@ Diese Datei trackt alle AI-generierten oder AI-unterstützten Teile des Projekts
 ## Hinweise
 - Alle AI-Vorschläge sind als Artifacts bereitgestellt für einfache Kopie.
 - Manuelle Anpassungen: User hat Codes in Dateien integriert, getestet und debuggt.
+
+# KI-Info für CFI-App Projekt
+
+## Über diese Datei
+Diese Datei trackt alle AI-generierten oder AI-unterstützten Teile des Projekts (basierend auf Grok-4-Modell). Sie dient der Transparenz, Nachverfolgung und Compliance. Letztes Update: 2025-11-16.
+
+## Allgemeine Infos
+- AI-Modell: Grok-4 (basierend auf xAI-Technologie).
+- Verwendung: Code-Generierung, Debugging, Strukturvorschläge und Dokumentation.
+- Richtlinien: Alle AI-generierten Codes werden manuell überprüft und angepasst. Keine sensiblen Daten geteilt.
+- Gesamte AI-Beiträge: Ca. 50% des Frontends (z. B. React-Components, Auth-Logik); Backend separat tracken. Neu: Erhebliche Beiträge zur Mobile-App (Expo-Setup, Screens und Debugging).
+
+## Änderungen pro Datum
+### 2025-11-15 (Initial Setup)
+- Generiert: Basisstruktur für Admin-Panel (Ordner wie pages, components).
+- AI-Rolle: Vorschläge für Projekt-Setup.
+
+### 2025-11-16 (Heutige Updates - Vollständige Auth-Erstellung im Admin-Panel und Mobile-App-Entwicklung)
+- Generiert/Erstellt: Vollständiger Registrierungs- und Login-Bereich im Admin-Panel.
+  - src/pages/Register.jsx: Kompletter Code für User-Registrierung mit Axios-POST, State-Handling (email, password), Error-Messages und Form-Validation.
+  - src/pages/Login.jsx: Kompletter Code für User-Login mit Axios-POST, State-Handling, Token-Speicherung in localStorage, Redirect (useNavigate) zu Dashboard, Message-Reset und erweitertes Error-Handling.
+- Debugging: Fix für doppelten Output (z. B. Messages doppelt) durch Entfernen von React StrictMode in src/main.jsx (Dev-Mode-Feature identifiziert und behoben).
+- AI-Rolle: Vollständige Code-Generierung, schrittweises Debugging (z. B. Analyse von StrictMode, Vorschläge für robustere Logik). Testvorschläge und Iterations (z. B. Redirect-Integration).
+
+- Neu: Mobile-App-Entwicklung (Expo/React Native).
+  - Generiert: Vollständige Setup-Anleitungen für Expo, Android-Emulator und erste App-Struktur.
+  - Generiert/Erstellt: Screens für Home (app/index.tsx), Instrument Registration (app/instrument-registration.tsx) und Basic Shop (app/shop.tsx).
+    - Home-Screen: Dashboard mit Navigation-Buttons zu Registration und Shop.
+    - Instrument Registration: Form für Seriennummer, Kamera-Integration (expo-image-picker) für Foto/Scan, Registrierungs-Button (Placeholder).
+    - Shop: Scrollbare Liste (FlatList) mit Beispiel-Items (z. B. Batterien, Kabel), Preisen, Beschreibungen und Bestell-Buttons (Placeholder-Alert).
+  - Debugging: Fixes für gängige Expo-Fehler (z. B. roter Screen durch fehlende Module, Render-Error in expo-router mit "asChild"), Installationsanleitungen (z. B. npx expo install expo-image-picker) und Cache-Clearing.
+  - AI-Rolle: Schritt-für-Schritt-Debugging (z. B. Analyse von "Command not found" Errors, Render-Fehlern), Code-Generierung als Artifacts, Testvorschläge. Iteratives Fixing bis "läuft jetzt" (Shop und Registration funktional).
+- Offene Punkte: Weiteres Building des Admin-Panels (z. B. Dashboard, Protected Routes); Mobile-App-Erweiterungen (z. B. QR-Scan, echte API-Integration, Warenkorb).
+
+## Zukünftige Pläne
+- Integration von Auth-Checks (z. B. Token-Validation in Protected Routes).
+- AI-unterstützte Features: Dashboard-Components, User-Management, Mobile-Features wie QR-Scan oder Zahlungen.
+- Tracking: Immer updaten nach jeder Session.
+
+## Hinweise
+- Alle AI-Vorschläge sind als Artifacts bereitgestellt für einfache Kopie.
+- Manuelle Anpassungen: User hat Codes in Dateien integriert, getestet und debuggt.
+
