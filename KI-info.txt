@@ -1,18 +1,60 @@
-CFI-App Projekt - Aktueller Stand (Carbon Fiber Instruments App)
-Projekt-Struktur
-bash
+# CFI-App Projekt - Aktueller Stand (Carbon Fiber Instruments App)
+
+## Projektübersicht und Ziele
+- **Beschreibung**: Eine App für Käufer von mezzo-forte Carbon-Streichinstrumenten. User können sich registrieren, ihr Instrument mit Seriennummer eintragen, mit dem Hersteller kommunizieren (nicht in Echtzeit), Zubehör bestellen (z.B. Pflegemittel, Saiten, Stege), Zahlungen via Stripe/Paypal/Bank abwickeln und Neuigkeiten/Updates erhalten.
+- **Entwicklungsansatz**: Iterativ aufbauen – startend mit User-Registrierung und Instrument-Eingabe, dann Erweiterungen wie Bestellungen und News.
+- **Plattformen**: Backend (Node.js/Express), Admin-Panel (React/Vite für Web-Admin), Mobile-App (Expo/React Native für Android/iOS).
+- **Aktueller Fokus**: Weiterentwicklung des Frontends (Admin-Panel), Integration mit Backend-APIs.
+
+## Projektstruktur
 cfi-app/
-├── backend/
-│   ├── server.js
-│   ├── .env
-│   ├── package.json
-│   └── routes/
-│       ├── auth.js
-│       └── items.js
-├── frontend/
-│   └── (noch nicht gestartet)
-.env Konfiguration (Backend)
-ini
+├── admin-panel/ # React/Vite für Admin-Frontend
+│ ├── public/
+│ ├── src/
+│ │ ├── assets/
+│ │ ├── components/
+│ │ ├── context/
+│ │ ├── hooks/
+│ │ ├── i18n/
+│ │ ├── pages/
+│ │ └── services/
+│ ├── package.json
+│ └── vite.config.js
+├── backend/ # Node.js/Express API
+│ ├── src/
+│ │ ├── config/
+│ │ ├── controllers/
+│ │ ├── middleware/
+│ │ ├── models/
+│ │ ├── routes/
+│ │ └── utils/
+│ ├── uploads/
+│ │ └── products/
+│ ├── server.js
+│ ├── .env
+│ └── package.json
+└── mobile-app/ # Expo/React Native für Mobile
+├── app/
+│ └── (tabs)/
+├── assets/
+│ └── images/
+├── components/
+│ └── ui/
+├── constants/
+├── hooks/
+├── scripts/
+├── src/
+│ ├── assets/
+│ ├── components/
+│ ├── context/
+│ ├── i18n/
+│ ├── navigation/
+│ └── screens/
+│ └── services/
+└── package.json
+
+
+## .env Konfiguration (Backend)
 PORT=5000
 DB_USER=postgres
 DB_PASSWORD=22101965
@@ -20,36 +62,85 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=cfi_app
 JWT_SECRET=a7f9k2m0x5q8n3b6j1w4c9d2e5f8g1h4i7j0k3l6m9n2p5q8r1s4t7u0v3w6x9y2z5
-Datenbank
-PostgreSQL läuft lokal
-Datenbank: cfi_app
-Benutzer: postgres
-Tabellen erstellt: users, items, categories
-Backend Status
-✅ Server läuft auf Port 5000
-✅ Express.js konfiguriert
-✅ PostgreSQL verbunden
-✅ JWT Authentication implementiert
-✅ CORS aktiviert
-Frontend Status
-❌ Noch nicht gestartet
-React-Projekt vorbereitet
-API-Endpoints (getestet)
-POST /api/auth/register
-POST /api/auth/login
-GET/POST /api/items
-GET/POST /api/categories
-Nächste Schritte
-Frontend starten und mit Backend verbinden
-Authentifizierung testen
-CRUD-Operationen testen
 
-Ziel: Android- und IPhone App für Käufer von mezzo-forte Carbon-Streichinstrumenten
-Features: 
-Registrierung als User
-Registrierung des Instruments mit Seriennummer
-Interface mit Hersteller für Kommunikation (nicht Echtzeit)
-Bestellmöglichkeit von Zubehör- und Ersatzteilen: Pflegemittel, Saiten, Stege
-Bezahlung mit Stripe, Paypal oder Bank Transfer
-Empfang von Neuheiten, Neuigkeiten, Updates
-Schritt für Schritt-Aufbau der App, zunächst nur Registrierung des Users und Eingabe der Seriennummer des Instruments, dann schrittweise Ausbau
+
+## Datenbank
+- **Typ**: PostgreSQL (lokal)
+- **Datenbank**: cfi_app
+- **Benutzer**: postgres
+- **Tabellen**: users, items, categories (erweitern für Instrumente, Orders etc. bei Bedarf)
+
+## Backend Status
+- ✅ Server läuft auf Port 5000
+- ✅ Express.js konfiguriert
+- ✅ PostgreSQL verbunden
+- ✅ JWT Authentication implementiert
+- ✅ CORS aktiviert
+- **API-Endpoints (getestet)**:
+  - POST /api/auth/register
+  - POST /api/auth/login
+  - GET/POST /api/items
+  - GET/POST /api/categories
+- **Nächste Erweiterungen**: Endpoints für Instrument-Registrierung, Orders und News.
+
+## Frontend Status (Admin-Panel)
+- ✅ Vite eingerichtet, Basisstruktur vorhanden
+- ❌ Noch nicht mit Inhalt gefüllt – Fokus auf Start mit React-Komponenten für Auth und Dashboard
+- **Nächste Schritte**: API-Integration (z.B. Axios für Calls), UI für Registrierung, Deployment auf Vercel.
+
+## Mobile-App Status
+- ✅ Expo eingerichtet, Basisstruktur vorhanden
+- ❌ Noch keine spezifischen Features implementiert – Integration mit Backend-APIs folgt nach Frontend.
+
+## Dokumentations- und Versionskontrolle
+- **Regelmäßige Updates**: Dokumentiere Fortschritte in "KI-info.txt" und "project-structure.txt". Aktualisiere nach jedem Meilenstein (z.B. neuer Endpoint, Frontend-Feature).
+- **Git-Workflow**: 
+  - Repository: [GitHub/Repo-Name, falls eingerichtet]
+  - Branches: main (stabil), dev (Entwicklung), feature/[name] für neue Features.
+  - Commits: Regelmäßig pushen, z.B. nach jedem Arbeitsabschnitt mit Messages wie "feat: Added login component" (Conventional Commits).
+  - Updates: `git add .`, `git commit -m "update: Dokumentation und Frontend-Start"`, `git push`.
+- **Hosting**: Über Vercel für Frontend/Admin-Panel und Mobile-Web (automatisches Deployment via Git). Backend könnte auf Vercel Serverless oder separatem Host laufen.
+
+## Nächste Schritte (Gesamt)
+1. Frontend starten: React-Komponenten für Auth bauen und mit Backend verbinden.
+2. Dokumentation aktualisieren: Diese Datei und Struktur-Text nach jedem Schritt.
+3. Git-Commit: Nach Frontend-Änderungen pushen.
+4. Testen: Auth und CRUD-Operationen.
+5. Erweiterung: Instrument-Registrierung, Zahlungen (Stripe-Integration).
+
+**Stand: 16.11.2025** – Für KIs: Lies diese Datei vollständig, um den aktuellen Projektstand zu verstehen. Frage nach spezifischen Details, falls unklar.
+
+Änerungen 16.11.25: 
+
+# KI-Info für CFI-App Projekt
+
+## Über diese Datei
+Diese Datei trackt alle AI-generierten oder AI-unterstützten Teile des Projekts (basierend auf Grok-4-Modell). Sie dient der Transparenz, Nachverfolgung und Compliance. Letztes Update: 2025-11-16.
+
+## Allgemeine Infos
+- AI-Modell: Grok-4 (basierend auf xAI-Technologie).
+- Verwendung: Code-Generierung, Debugging, Strukturvorschläge und Dokumentation.
+- Richtlinien: Alle AI-generierten Codes werden manuell überprüft und angepasst. Keine sensiblen Daten geteilt.
+- Gesamte AI-Beiträge: Ca. 50% des Frontends (z. B. React-Components, Auth-Logik); Backend separat tracken.
+
+## Änderungen pro Datum
+### 2025-11-15 (Initial Setup)
+- Generiert: Basisstruktur für Admin-Panel (Ordner wie pages, components).
+- AI-Rolle: Vorschläge für Projekt-Setup.
+
+### 2025-11-16 (Heutige Updates - Vollständige Auth-Erstellung)
+- Generiert/Erstellt: Vollständiger Registrierungs- und Login-Bereich.
+  - src/pages/Register.jsx: Kompletter Code für User-Registrierung mit Axios-POST, State-Handling (email, password), Error-Messages und Form-Validation.
+  - src/pages/Login.jsx: Kompletter Code für User-Login mit Axios-POST, State-Handling, Token-Speicherung in localStorage, Redirect (useNavigate) zu Dashboard, Message-Reset und erweitertes Error-Handling.
+- Debugging: Fix für doppelten Output (z. B. Messages doppelt) durch Entfernen von React StrictMode in src/main.jsx (Dev-Mode-Feature identifiziert und behoben).
+- AI-Rolle: Vollständige Code-Generierung, schrittweises Debugging (z. B. Analyse von StrictMode, Vorschläge für robustere Logik). Testvorschläge und Iterations (z. B. Redirect-Integration).
+- Offene Punkte: Weiteres Building des Admin-Panels (z. B. Dashboard, Protected Routes) aufgeschoben.
+
+## Zukünftige Pläne
+- Integration von Auth-Checks (z. B. Token-Validation in Protected Routes).
+- AI-unterstützte Features: Dashboard-Components, User-Management.
+- Tracking: Immer updaten nach jeder Session.
+
+## Hinweise
+- Alle AI-Vorschläge sind als Artifacts bereitgestellt für einfache Kopie.
+- Manuelle Anpassungen: User hat Codes in Dateien integriert, getestet und debuggt.

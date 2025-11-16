@@ -20,7 +20,17 @@ router.post('/register', async (req, res) => {
       [email, hashedPassword, name]
     );
 
-    res.status(201).json(result.rows[0]);
+    const user = result.rows[0];
+
+    // Debug-Log: Überprüft, ob JWT_SECRET geladen ist
+    
+    // Generiere Token (wie in Login)
+    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
+      expiresIn: '24h',
+    });
+
+    // Gib User UND Token zurück
+    res.status(201).json({ token, user });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
