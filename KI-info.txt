@@ -187,3 +187,7 @@ Diese Datei trackt alle AI-generierten oder AI-unterstützten Teile des Projekts
 - Alle AI-Vorschläge sind als Artifacts bereitgestellt für einfache Kopie.
 - Manuelle Anpassungen: User hat Codes in Dateien integriert, getestet und debuggt.
 
+Änderungen 17.11. : 
+Sprachenmodul implementiert, Deutsch und Englisch, Ordner \mobile-app\app\translations
+i18n.ts in \mobile-app\app
+

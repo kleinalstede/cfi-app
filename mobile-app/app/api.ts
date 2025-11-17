@@ -1,13 +1,19 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:3000'; // Lokal; ändere zu Production-URL später
-
-export const fetchDashboardData = async () => {
+// app/api.ts
+export const registerInstrument = async (instrumentData) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/dashboard`); // Ersetze mit deinem Endpoint, z.B. /api/instruments
-    return response.data; // Angenommen, data ist ein Objekt wie { message: "Hallo vom Backend!" } oder Array
+    const response = await fetch('http://localhost:5000/instruments', {  // Passe URL an deine Endpoint an
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(instrumentData),  // z.B. { name: 'Guitar', type: 'Acoustic', serial: '12345' }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    
+    return await response.json();  // Erwarte Success-Response vom Backend
   } catch (error) {
-    console.error('API Error:', error);
-    throw error;
+    console.error('Error registering instrument:', error);
+    throw error;  // Für Fehlerbehandlung in der Komponente
   }
 };
