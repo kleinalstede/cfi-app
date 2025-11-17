@@ -34,6 +34,3 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// (Füge deinen /login-Endpoint hier hinzu, falls schon da)
-
-module.exports = router;
